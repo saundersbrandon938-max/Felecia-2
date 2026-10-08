@@ -1,0 +1,747 @@
+---
+skill_bundle: a11y-audit
+file_role: reference
+version: 45
+version_date: 2026-09-23
+previous_version: 44
+change_summary: >
+  Migrates the processed post-release handoff into durable roadmap and ops records.
+---
+
+# Changelog
+
+## Documentation maintenance -- 2026-09-23
+
+- `ROADMAP.md`: add an open maintenance item for the hosted GuideCheck 0.7.1 Level 2 finding on `install-skill`, with constraints and acceptance criteria. The README and website disclosed that result in a separate change on 2026-09-23.
+- `../ops/cli-contract-pilot-plan-2026-09-07.md`: record the second CLI-contract adoption conditions.
+- `../ops/v3.1.0-release-preparation.md`: record post-release branch state, including the squash-merge tree-equality check.
+- `MANIFEST.yaml`: refresh roadmap and changelog versions and hashes, and set bundle revision 45. Runtime files, evals, assistant guide, package version and published release remain unchanged.
+
+## Documentation maintenance -- 2026-09-08
+
+- `ROADMAP.md`: mark v3.1.0 as shipped and link the final publication receipt; keep the CLI contract experimental and consumer adoption separately evidenced.
+- `../ops/cli-contract-pilot-plan-2026-09-07.md` and `../ops/dependency-readiness-2026-09-07.md`: reconcile current status while preserving the original plan, candidate hashes and copied-site evidence limits.
+- `MANIFEST.yaml`: refresh roadmap and changelog versions and hashes, bundle revision 44, and release-status notes. This changelog records the documentation change; runtime files, evals, package version and published release remain unchanged.
+
+## v3.1.0 -- 2026-09-07
+
+- Prepare package metadata and lockfile for 3.1.0; synchronize README, website,
+  llms discovery, the Action starter, and assistant guide 0.3.15. Publication
+  and hosted verification are tracked separately in the release preparation
+  record.
+
+- Add an experimental `--contract posix-json-v1` path to `scripts/run-audit.js`
+  while existing invocations preserve their native
+  output and exit behavior. The new mode emits terminal JSON, separates gate
+  outcomes from operational failures, and finishes reports after gate rejection.
+- Define the pilot in `references/cli-contract.md` and
+  `references/cli-result-schema.json`; link it from `SKILL.md`,
+  `references/interoperability.md`, README and `ROADMAP.md`.
+- Add deterministic process, error, stream and legacy cases in
+  `evals/test-cli-contract.js`, syntax coverage in `evals/run-evals.js`, and
+  real external adapter checks in `scripts/test-cli-contract-consumer.mjs`.
+  The existing validation workflow runs both CLI test entrypoints.
+- Refresh `MANIFEST.yaml` inventory, headers and hashes for the pilot files.
+
+- Add `--fail-on major` for a zero-current-critical-or-serious acceptance bar.
+  Moderate, minor, and explicitly best-practice-only findings remain visible
+  and nonblocking; mixed standards and best-practice rules retain their normal
+  severity.
+- Require best-practice-only rules to contain the explicit `best-practice` tag
+  and otherwise only axe `cat.*` tags. Standards and unrecognized tags prevent
+  advisory downgrading.
+- Treat unknown violation impact and critical, serious, or unknown-impact axe
+  `incomplete` candidates as inconclusive. Preserve operational scan failures
+  as infrastructure errors and moderate/minor incomplete candidates as
+  advisory evidence.
+- Give confirmed failures precedence in the standards matrix, then render
+  unresolved axe candidates as `Needs review` ahead of pass evidence.
+- In major mode, reject HTTP error and non-HTML requested targets as missing
+  coverage so an accessible error page cannot produce a false pass.
+- Forward the mode through the vendor-neutral adapter and reusable Action, and
+  add report/schema evidence plus deterministic pass, fail, inconclusive,
+  best-practice-only, mixed-tag, and published-v1 compatibility coverage.
+
+## v3.0.0 -- 2026-09-05
+
+- Breaking: root and scanner package metadata and lockfiles require Node.js
+  >=22.12.0. Node 18 and 20 support ends with this major version.
+- `deps/package.json`, `deps/package-lock.json`, and `scripts/scan.js`: pin
+  Puppeteer 25.10.0 with puppeteer-core 25.10.0 and browsers 3.2.2. The browser
+  installer uses `modern-tar`; `extract-zip` is absent from the managed graph.
+  Remove the obsolete GHSA-jmr9-qjv8-65gv audit exception from
+  `ops/audit-allowlist.json`. Project/global fallback dependencies remain
+  externally managed and outside this lockfile guarantee.
+- `scripts/check-runtime.js` and `scripts/scan.js`: reject unsupported Node
+  versions before acquisition or scanning and import Puppeteer's ESM entry
+  from package metadata. Replace stale skill-local Puppeteer installations
+  with the pinned locked graph before scanning.
+- `.github/actions/scan/action.yml`: default to Node 22, enforce the runtime
+  floor before npm installation, and isolate server bookkeeping in RUNNER_TEMP.
+- `.github/workflows/validate-skill.yml` and `pages.yml`: explicitly select
+  supported runtimes. Test Node 22.12.0, 22, 24, and 26; exercise real browsers
+  and isolated consumers on the floor, 24, and 26.
+- `scripts/test-action-consumer.mjs` and root package scripts: run the actual
+  Action shell steps from a clean external workspace and package directory,
+  testing fresh browser acquisition and skip-download cache reuse. Hosted
+  setup-node and artifact uploads remain separate CI checks.
+- `evals/run-evals.js`, `evals/run-browser-eval.js`, and `evals/evals.json`:
+  guard nested, optional, development, and aliased extractor reintroduction,
+  runtime boundaries, matching scanner pins, and real Puppeteer 25 execution.
+- `references/runtime-compatibility.md`, `SKILL.md`, `README.md`,
+  `CONTRIBUTING.md`, root and hosted `llms.txt`, `docs/index.html`, and the
+  Action starter: synchronize runtime requirements, migration guidance, and
+  v3 references. The release record documents the validation gates.
+- Root and hosted `assistant-guide.txt` plus its manifest: guide v0.3.13
+  declares the runtime floor and re-pins the changed scanner. Bundle
+  `MANIFEST.yaml` tracks changed file versions and SHA-256 hashes.
+
+- Documentation pass: align README dependency order, release identifiers,
+  historical field evidence, and manifest claims; document adapter acquisition
+  and both platform entry paths. Refresh the Codex prompt and both `llms.txt`
+  indexes, including accurate report structure and runtime/adapter links.
+- Website: add visible v3 upgrade guidance and SoftwareSourceCode metadata,
+  align modification dates and sitemap, complete the PR base/head example,
+  and align human-readable and machine-readable release information.
+- Guide v0.3.13: disclose managed Chrome downloads and stale Puppeteer
+  replacement, retaining the existing action approval and hash contracts.
+
+- Hosted validation: all ten PR jobs passed at candidate `7692920` in
+  run `33989560704`, including the exact Node floor, real browsers and
+  external consumers, and actual Action setup, upload, and PR selection.
+
+## v2.8.1 -- 2026-09-05
+
+- Resolve the complete scanner dependency set atomically with the committed
+  lockfile, retry transient failures with bounded backoff, and distinguish
+  timeout diagnostics from non-zero npm exits.
+- Add `--install-timeout-ms` and `A11Y_AUDIT_INSTALL_TIMEOUT_MS` controls.
+- Install the composite Action's pinned `http-server` dependency from the
+  committed lockfile before starting the server-readiness clock.
+- Add deterministic regression coverage for slow registries, retries, atomic
+  installs, configurable timeouts, and Action fetch/readiness separation.
+
+## v2.8.0 -- 2026-09-05
+
+- `scripts/run-audit.js`: add one schema-versioned JSON process boundary that
+  composes discovery, changed-surface selection, scanning, and report
+  generation while preserving every native artifact and stage exit code.
+- `references/interoperability.md`: document strict request fields, dry-run
+  planning, CI base/head overrides, workspace path confinement, and the stable
+  run-envelope contract.
+- eval-21: validate stage composition, pull-request SHA propagation,
+  conflicting-input rejection, workspace confinement, and non-mutating dry-run
+  behavior.
+- Hosted consumer candidate: add a pull-request-only Action invocation using
+  the event's base and head objects with full Git history, then require
+  non-empty changed-file and scan evidence.
+- Dependency gate: retain the reviewed `extract-zip` exception while GitHub
+  Actions npm audit and GitHub Dependabot report the advisory but local npm
+  audit omits it. The gate requires explicit provider-variance evidence and
+  retains the existing expiry.
+- Field evidence: reconcile the completed `sam-rogers.com` v2.7.0 pilot, which
+  reduced 317 discovered pages to 10 representatives across 8 groups plus two
+  additive tag routes and remained active as a regression gate.
+- Direct Community Access extension packaging remains deferred because the
+  upstream packaging and bridge surfaces are still evolving. The JSON process
+  boundary remains portable across agent ecosystems.
+- Hosted validation: PR #7 exercised real pull-request base and head objects;
+  all seven exact-head jobs passed, including the consumer Action, real-browser
+  eval, Node 18/20/22 matrix, GuideCheck, actionlint, and zizmor.
+- Documentation: publish the adapter on the README and canonical site, update
+  every public Action example to `v2.8.0`, migrate durable roadmap content to
+  `ROADMAP.md`, and delete the processed temporary handoff.
+
+## v2.7.0 -- 2026-08-09
+
+- `scripts/discover.js`: accept reviewed route-group maps, prefer exact routes
+  over wildcard routes, publish complete discovery and grouping evidence, and
+  expand unsafe maps to one exact group per URL instead of reducing coverage.
+- `scripts/select-changed-surfaces.js`: accept schema-v2 source maps with
+  constrained direct changed-page transforms. Derived routes must resolve
+  uniquely to already discovered same-origin URLs; unresolved or ambiguous
+  routes and changed route-group maps retain the full representative sample.
+- Composite Action and starter: add `discover-group-map`, pass both reviewed
+  maps through discovery and selection, and retain existing evidence artifacts.
+- `references/route-grouping.md`, changed-surface reference v2, and example
+  maps: document the portable project-owned contracts without framework or
+  executable inference.
+- eval-20: exercise 316 flat URLs, exact-over-wildcard precedence, ambiguous
+  and incomplete map fallback, direct changed-page inclusion, global fallback,
+  changed-map fallback, and deterministic output.
+- Consumer Action fixture: execute a reviewed route-group map and schema-v2
+  direct route through the composite Action, then verify both discovery and
+  selection evidence in hosted CI.
+- Direct-route hardening: distinguish canonical-route ambiguity from ordinary
+  unresolved routes, reject unsafe origin and traversal configuration, and
+  cover nested paths plus `index` route normalization.
+- Documentation: distinguish route-group fallback over every discovered URL
+  from changed-surface fallback over the complete representative scan plan.
+- Assistant guide v0.3.10: re-pin the hardened selector executable while
+  retaining the existing authority and approval boundaries.
+- Package metadata, public surfaces, assistant guide, manifest, handoff, and
+  reusable Action pins are synchronized for the v2.7.0 release.
+
+## v2.6.1 -- 2026-08-09
+
+- Scanner lockfile: update transitive `js-yaml` from 4.3.0 to 4.3.1 within
+  Puppeteer's existing dependency range, resolving
+  `GHSA-5p4m-2wfm-xmqj` / `CVE-2026-59870` without changing the pinned
+  axe-core 4.12.1 or Puppeteer 24.43.1 releases.
+- Validation workflow and executable eval contract: run and retain a
+  high-severity npm advisory gate for both the
+  root validation graph and the separately locked scanner graph. This turns
+  advisory drift into a blocking hosted check instead of relying on release-
+  time manual validation.
+- Repository security controls: enable Dependabot vulnerability alerts and
+  automated security fixes, secret scanning and push protection, plus active
+  rulesets blocking deletion and history rewrites for `main` and `v*` tags.
+- `package.json`, `package-lock.json`, `MANIFEST.yaml`, `HANDOFF.md`, README,
+  website, Action starter, and executable eval contract: synchronize the
+  v2.6.1 release and correct post-release v2.6.0 roadmap language.
+
+## v2.6.0 -- 2026-08-04
+
+- `scripts/select-changed-surfaces.js` and `references/changed-surfaces.md`:
+  add explicit source-prefix ownership maps, deterministic group selection,
+  and evidence-backed full-sample fallback for every incomplete or unsafe
+  mapping condition.
+- `.github/actions/scan`, the workflow starter, and the consumer fixture:
+  accept changed-file or Git base/head inputs, preserve a selection plan, and
+  scan that plan only after the selector records a valid targeted result.
+- `evals/evals.json`, `evals/run-evals.js`, and eval-19 fixtures: cover
+  targeted, global, unmapped, invalid, unknown-group, and deterministic paths;
+  manifest validation now rejects embedded file-version drift.
+- `README.md`, `docs/index.html`, `llms.txt`, `docs/llms.txt`, `SKILL.md`,
+  `agents/openai.yaml`, and the Action example: document v2.6.0 adoption and
+  the explicit no-silent-scope-reduction contract.
+- `assistant-guide.txt` and its hosted copy: prepare v0.3.8 with current
+  discover, selector, and scanner executable hashes. The sidecar manifest is
+  synchronized to the hosted guide bytes and digest.
+- `package.json`, `package-lock.json`, `MANIFEST.yaml`, and `HANDOFF.md`:
+  synchronize the release candidate, bundle inventory, and field-validation
+  checklist. No tag, GitHub Release, or publication is implied by this entry.
+- Root and scanner lockfiles: retain the existing direct dependency pins while
+  updating compatible transitives to patched `fast-uri` 3.1.5 and `ip-address`
+  10.4.0 releases. Live npm audits report zero known vulnerabilities.
+
+## v2.5.2 -- 2026-07-21
+
+- Accepts tested Puppeteer 24.43.1 while retaining its Node 18+ support.
+- Synchronizes the scanner fallback pin, locked dependency graph, eval contract,
+  manifest hashes, workflow starter, README, and website.
+- Disables routine Dependabot version pull requests for the versioned scanner
+  graph. Dependabot security updates remain enabled; ordinary upgrades require
+  coordinated eval, manifest, changelog, and release updates.
+- Corrects the recurring CI failure caused when dependency-only pull requests
+  reached `main` without the bundle metadata required by skill versioning.
+
+## Assistant guide v0.3.7 -- 2026-07-21
+
+- Re-pins all scan actions to the Puppeteer 24.43.1-aware `scan.js` executable.
+- Keeps commands, approvals, authority boundaries, and GuideCheck profile
+  unchanged.
+
+## v2.5.1 -- 2026-07-21
+
+- **Consumer-path evidence:** CI now invokes the local composite Action through
+  its public inputs against the served eval fixture, then verifies retained
+  discovery and scan JSON. This closes the gap between testing scanner helpers
+  and testing the Action consumers actually adopt.
+- **Sitemap-free adoption:** the Action exposes `discover-no-sitemap` so static
+  builds without a sitemap can opt into bounded crawl discovery explicitly;
+  crawl mode now retains the entry URL so link-free single-page sites work.
+- **Workflow supply-chain hardening:** all remote Action references are pinned
+  to full commit SHAs with release comments. Checkout credentials are not
+  persisted, and validation defaults to read-only repository permissions.
+- **Input-injection hardening:** server path and port inputs now enter composite
+  Action shell code through environment variables rather than direct GitHub
+  expression interpolation.
+- **Locked browser dependencies:** validated axe-core and Puppeteer versions,
+  including patched transitive dependencies, now have committed package and
+  lock manifests. Browser CI installs them with `npm ci`.
+- **Blocking workflow analysis:** pinned actionlint 1.7.12 checks workflow
+  semantics and patched, pinned zizmor 1.28.0 checks workflow and composite-Action
+  security. The hardened tree reports no low-or-higher zizmor findings.
+- Dependabot covers GitHub Actions plus the root and scanner npm lockfiles so
+  immutable pins remain maintainable through reviewed update pull requests.
+- README, website, llms surfaces, SKILL.md, workflow starter, eval-18, manifest,
+  and handoff now describe and enforce the same v2.5.1 adoption contract.
+
+Assistant guide v0.3.6 re-pins `discover.js` after crawl fallback began
+including the entry page. No guide command or authority boundary changed.
+
+## Assistant guide v0.3.6 -- 2026-07-21
+
+- Re-pins `discover-site` to the corrected `discover.js` executable hash.
+- Keeps the command, approvals, scope, and GuideCheck 0.7.0 profile unchanged.
+
+## v2.5.0 -- 2026-07-21
+
+- **Template-aware reusable Action:** the composite Action can run
+  deterministic discovery before scanning, accepts cross-origin sitemap
+  policy and sample-size inputs, exposes discovery and scan paths, and
+  uploads both artifacts. The bundled workflow starter consumes the tagged
+  remote Action with an accepted-baseline gate.
+- **Safer scanner orchestration** (`scripts/scan.js` v8): `--discover`
+  consumes a discovery plan directly; URLs are restricted to HTTP(S),
+  normalized, and deduplicated. Puppeteer auto-install is pinned, page
+  failures produce partial evidence but exit nonzero, browser resources are
+  closed reliably, and the unused Lighthouse command placeholder is gone.
+- **Versioned machine contract** (`scripts/report.js` v6): generated JSON
+  records `schema_version: 1`; the canonical Draft 2020-12 schema is
+  published at https://skilla11y.dev/schema/audit-v1.json and enforced with
+  pinned Ajv validation.
+- **Stronger release gates:** offline validation now checks complete manifest
+  coverage and hashes, schema-valid sample/generated JSON, discover-plan
+  safety, public adoption surfaces, and Action contracts across Node 18, 20,
+  and 22. A separate CI and local eval launches real Puppeteer against a
+  loopback fixture, detects an axe violation, writes a reviewed baseline,
+  and verifies a zero-new-findings rescan.
+- **Adoption surfaces:** README, docs, and llms surfaces now include a
+  no-install trial command, a reusable Action example, and direct
+  discover-to-scan commands without shell-expanded URL lists.
+- **Cleanup:** removed an unreferenced malformed archive stub and its
+  unreferenced 1 MB image. The repository audit context no longer points to
+  a nonexistent accepted baseline.
+- CI validation runs only for main pushes and pull requests, avoiding
+  duplicate tag-triggered validation runs; Pages stages the versioned schema
+  beside the documentation site.
+
+## Assistant guide v0.3.5 -- 2026-07-21
+
+- Makes the bounded scan action consume the discovery plan directly and
+  refreshes scanner/report executable pins and the sidecar manifest.
+
+## v2.4.0 -- 2026-07-13
+
+- **Pluggable standards data** (`scripts/report.js` v5): the criteria
+  matrix is no longer hardcoded. `--standard <id>` loads
+  `references/standards/<id>.json`; ids are validated against a strict
+  pattern before any file read. Bundled standards:
+  - `wcag21-aa` (default, behavior-identical to prior releases): all 50
+    WCAG 2.1 Level A/AA criteria. Remains the default because the ADA
+    Title II final rule and EN 301 549 V3.2.1 cite WCAG 2.1 AA.
+  - `wcag22-aa`: all 55 WCAG 2.2 Level A/AA criteria — 4.1.1 Parsing
+    removed per WCAG 2.2; 2.4.11 Focus Not Obscured (Minimum), 2.5.7
+    Dragging Movements, 2.5.8 Target Size (Minimum), 3.2.6 Consistent
+    Help, 3.3.7 Redundant Entry, and 3.3.8 Accessible Authentication
+    (Minimum) added. axe tag mapping handles the new SC tags natively.
+  - `en301549`: EN 301 549 V3.2.1 clause 9 (Web) — the harmonised
+    standard under the European Accessibility Act — rendered with
+    clause numbers alongside the one-to-one WCAG 2.1 criteria mapping.
+- The report header's Standards row, the evidence-matrix heading, and
+  the audit JSON (`standard: {id, name}`) all record which standard was
+  used. Matrix keys remain WCAG SC identifiers across standards so
+  downstream tooling stays stable.
+- **Eval coverage** (`evals/run-evals.js` v6, eval-15): default-run
+  compatibility, WCAG 2.2 add/remove set, EN 301 549 clause rendering,
+  and rejection of unknown or traversal-shaped standard ids.
+- SKILL.md v17 documents standard selection in Phase 3 and maps
+  `PROJECT_CONTEXT.md` `standards` values to standard ids;
+  project-context-template v3 lists the bundled ids.
+- Assistant guide v0.3.4: re-pins the report.js `exec-sha256` after the
+  standards refactor; sidecar manifest updated to match.
+
+## Assistant guide v0.3.4 -- 2026-07-13
+
+- Re-pins `generate-report` `exec-sha256` to report.js v5 (pluggable
+  standards). No behavioral change to the guide's action contract.
+
+## v2.3.1 -- 2026-07-11
+
+- **Install correction:** public surfaces now install directly from GitHub
+  with `npx skills add snapsynapse/skill-a11y-audit --skill a11y-audit`.
+  Manual fallbacks use `.claude/skills` for Claude Code and `.agents/skills`
+  for Codex; the stale `.codex/skills` path and assumed local clone are gone.
+- **GuideCheck enforcement:** assistant guide v0.3.3 targets profile 0.7.0,
+  fits the 8 KiB and 120-byte-line limits, and hash-pins repository-owned
+  scripts. The reference verifier reports Level 3 with no blockers.
+- **Release gates:** CI runs the pinned GuideCheck 0.7.0 verifier. Eval-14
+  also guards install surfaces, hosted/root guide equality, byte constraints,
+  executable hashes, and sidecar manifest integrity.
+
+## Assistant guide v0.3.3 -- 2026-07-11
+
+- Narrowed scope to public install and bounded audit execution.
+- Updated the profile and verifier contract to GuideCheck 0.7.0.
+- Reduced the artifact from 9,099 to 7,554 bytes and wrapped all lines.
+- Added SHA-256 pins for discover, scan, and report entry points.
+
+## v2.3.0 -- 2026-07-11
+
+- **Accepted accessibility baselines** (`scripts/scan.js` v7): findings
+  receive stable SHA-256 fingerprints from axe rule, normalized route, and
+  normalized axe target. `--write-baseline <path>` creates a reviewable
+  baseline artifact; `--baseline <path> --fail-on new` fails only for
+  findings outside it and reports accepted, new, and resolved counts.
+- **Delta integrity:** baseline files record the axe-core version. A version
+  mismatch stops comparison unless the caller deliberately passes
+  `--allow-axe-version-mismatch`, preventing ruleset drift from silently
+  appearing as a site regression.
+- **Composite Action:** `.github/actions/scan` now accepts a `baseline`
+  input, and `fail-on` supports `errors`, `new`, or `none`. Baseline creation
+  remains an explicit local CLI operation rather than a CI input.
+- **Project context:** the canonical context template supports regression
+  gate policy, and this repository now carries a self-audit context at
+  `.a11y-audit/PROJECT_CONTEXT.md`.
+- **Truthful output language:** generated reports call the WCAG table an
+  automated evidence matrix and state that an automated pass does not prove
+  conformance.
+- **Positioning:** README, site copy, and HANDOFF now focus the project on
+  open, self-hosted accessibility regression evidence for large web estates.
+  Broad agent suites, generic MCP wrapping, remediation, VPAT generation,
+  certification, and hosted monitoring are explicit non-goals.
+- **Skill compatibility:** removed non-minimal metadata from SKILL.md
+  frontmatter so it again contains only `name` and `description`.
+- **Validation:** deterministic coverage now exercises route/target
+  normalization, fingerprint stability, and accepted/new/resolved baseline
+  comparison. The suite contains 16 checks. Full manifest verification also
+  corrected a stale hash for the sample JSON artifact.
+
+## Assistant guide v0.3.2 -- 2026-07-11
+
+- Added separately approved actions for writing a reviewed baseline and
+  scanning only for findings outside that baseline.
+- Made baseline acceptance rules explicit: never refresh automatically in
+  CI, stop on axe-core version drift, and never describe acceptance as
+  conformance.
+- Synchronized the repository and hosted guide copies and refreshed the
+  published hash manifest.
+
+## v2.2.0 -- 2026-07-11
+
+- **axe-core version pinning** (`scripts/scan.js` v6): auto-install now
+  pins axe-core to a known-good version (4.12.1) instead of floating on
+  `latest`; `--axe-version <x.y.z|latest>` overrides the pin. axe rule
+  sets change between releases, so an unpinned install made repeat
+  audits drift — the same site could gain "new" violations that were
+  really new rules. Scan output now records the resolved `axe_version`
+  and `browser_version` regardless of which resolution tier (skill-deps,
+  project, global) supplied the package.
+- **Cross-version delta guard** (`scripts/report.js` v3): the audit JSON
+  now carries `axe_version`, and the Delta from Previous Audit section
+  compares it against the previous audit's recorded version. A mismatch
+  renders a caution that rule-set drift can masquerade as regressions or
+  fixes; a previous audit with no recorded version gets a quieter note.
+  `json.delta` exposes `previousAxeVersion`, `currentAxeVersion`, and
+  `axeVersionMismatch`.
+- **Doc correction** (SKILL.md v15): the "What This Skill Does NOT Do"
+  list claimed the skill does not run in CI, contradicting the composite
+  action shipped at `.github/actions/scan` since v2.1.0. The exclusion
+  is now scoped to *hosted* continuous monitoring; CI gating is a
+  supported, documented path.
+- **Eval coverage** (`evals/run-evals.js` v3): eval-11 fixtures now
+  carry mismatched axe versions (4.10.2 → 4.12.1) and assert both the
+  JSON fields and the markdown caution; the scanner hardening regression
+  covers `validateAxeVersion` injection rejection and the pinned
+  install-spec invocation.
+- **Roadmap logged** (HANDOFF.md v15): durability/relevance/value
+  assessment recorded — pluggable standards data (WCAG 2.2, EN 301 549),
+  SARIF output, CI baseline (`fail-on: new`), Playwright support,
+  remediation handoff artifact, authenticated-page scanning, MCP
+  packaging.
+
+## v2.1.1 -- 2026-06-04
+
+- `scripts/scan.js` (v5): `--sitemap` now transparently recurses into
+  `<sitemapindex>` documents, following each child `<sitemap><loc>` to
+  the leaf URL set. Cycle-protected (50-doc cap), and find/replace runs
+  before the child fetch so the rewritten host applies recursively.
+  Caught while wiring publedge.org to the composite action — its
+  sitemap.xml is a 7-section index, which the previous loader couldn't
+  walk.
+
+## v2.1.0 -- 2026-06-03
+
+- Added CI-ready CLI flags to `scripts/scan.js`:
+  - `--sitemap <url>` discovers targets from a sitemap.xml at scan time,
+    with optional `--sitemap-find` / `--sitemap-replace` host rewriting
+    and `--sitemap-exclude <regex>` URL filtering.
+  - `--fail-on errors` makes the script exit non-zero (status 2) when
+    axe reports any violation, so the scan's exit code carries the gate
+    semantic to CI without callers parsing JSON.
+- Added a reusable GitHub composite action at
+  `.github/actions/scan/action.yml` that wraps the scanner (optional
+  http-server, scan, artifact upload). Consumer repos that previously
+  hand-rolled `pa11y-ci` now collapse to a few lines invoking this
+  action.
+
+## v2.0.1 -- 2026-05-31
+
+- Hardened `scan.js` dependency installation by validating browser
+  selection before dependency lookup and invoking `npm install` with argv
+  rather than shell interpolation.
+- Added bounded discovery fetches, redirect limits, same-origin discovery
+  defaults, explicit cross-origin sitemap opt-in, and origin disclosure in
+  discovery/report output.
+- Escaped target-derived Markdown fields in generated audit reports and
+  issue plans to reduce agent-facing instruction injection and table
+  breakage from untrusted scan data.
+- Documented the repository release, bundle inventory, and assistant
+  guide version model.
+
+## Assistant guide v0.3.0 -- 2026-05-24
+
+- Added Level 4 provenance metadata for the GuideCheck
+  `assistant-guide.txt` artifact, including a text sidecar manifest URL.
+- Prepared the public repository copy at `/assistant-guide.txt` as the
+  cross-channel hash anchor for the published guide.
+- Tightened action block metadata to satisfy the GuideCheck hosted
+  verifier's guide-file checks.
+
+## v16 -- 2026-05-19
+
+- Added `evals/run-evals.js`, a deterministic offline eval runner that
+  validates discovery fixtures, issue planning, quick-scan behavior,
+  skipped-Lighthouse report contracts, page-aware deltas, dependency
+  policy documentation, syntax checks, JSON parsing, YAML parsing, and
+  context bootstrap smoke behavior.
+- Added fixture coverage for `eval-3` quick-scan behavior and `eval-4`
+  skipped-Lighthouse report contract behavior.
+- Updated `package.json`, `.github/workflows/validate-skill.yml`, and
+  `CONTRIBUTING.md` so `npm run validate` is the single local and CI
+  validation entrypoint.
+- Updated `SKILL.md` to make the dependency auto-install consent
+  boundary explicit before agents invoke `scan.js` in workspaces without
+  existing scan dependencies.
+- Updated `evals/evals.json` so the human acceptance ledger records the
+  deterministic eval-3 fixture and the new eval-4 contract fixture.
+
+## v15 -- 2026-04-23
+
+- Expanded `scripts/plan-issues.js` so the dry-run path now reads
+  project context, applies configured severity thresholds, adds priority
+  and WCAG labels, records additional standards, and marks duplicates
+  from a supplied existing-key index.
+- Added runnable fixture coverage for `eval-2`, covering the strongest
+  local mitigation path for issue mode short of authenticated live
+  tracker writes.
+- Updated `references/issue-trackers.md` so the documented safe dry-run
+  path matches the richer helper behavior.
+
+## v14 -- 2026-04-23
+
+- Added `evals/run-discover-fixture.js`, a reusable mocked-network
+  fixture runner for `discover.js`.
+- Added runnable fixture assets for `eval-9` (cross-origin sitemap
+  preservation) and `eval-10` (deterministic discovery sampling).
+- Validated both discovery fixtures locally so the two discovery-related
+  regressions now have in-repo reproduction paths, not just notes in
+  `evals/evals.json`.
+
+## v13 -- 2026-04-23
+
+- Discovery now preserves published sitemap URLs instead of rewriting
+  them onto the runtime origin. This includes `robots.txt` sitemap
+  entries, sitemap indexes, nested sitemap URLs, and redirect targets.
+- Discovery sampling is now deterministic. Candidate selection uses
+  stable spread indexes and fingerprint ranking now breaks ties by URL,
+  eliminating noisy CI diffs across repeated runs.
+- `discover.js` is importable without changing CLI behavior, which makes
+  mocked-network regression validation possible inside the repo.
+- `report.js` delta comparison is now page-aware. A rule that moves
+  between pages or template groups with the same instance count is
+  reported as changed rather than unchanged.
+- Added and validated eval coverage for the resolved issues:
+  `eval-9` (cross-origin sitemap preservation), `eval-10`
+  (deterministic discovery), and `eval-11` (page-aware delta changes).
+
+## v12 -- 2026-03-26
+
+- **Self-contained dependencies:** scan.js now resolves axe-core and
+  puppeteer from skill-local `deps/` → project → global → auto-install.
+  The skill works against any project without requiring accessibility
+  tooling to be pre-installed.
+- **Quick Fixes:** report.js includes actionable one-liner remediation
+  hints for ~17 common axe rules, sorted by impact severity.
+- **Delta comparison:** `report.js --previous <prior-audit.json>` shows
+  fixed rules (strikethrough), new rules, changed instance counts with
+  direction arrows, and net totals.
+- **Null-label fix:** API enrichment labels no longer show "null" when
+  the API manifest lacks count data for an entity type.
+
+## v11 -- 2026-03-26
+
+- **discover.js:** Template-aware page discovery with sitemap-first
+  approach. Falls back to HTML navigation crawl if no sitemap exists.
+- **DOM fingerprinting:** Loads candidate pages and scores structural
+  complexity (tables, details, forms, interactive attrs). Picks the
+  most and least complex pages per group instead of alphabetic spread.
+- **API entity enrichment:** Reads `/api/v1/index.json` (or similar)
+  and annotates groups with entity names/counts (e.g., "25 regulations").
+- **Shared template detection:** report.js cross-references per-page
+  violation fingerprints with discover groups. Surfaces which template
+  groups share identical issues so developers fix the shared template once.
+- **No-sitemap fallback validated:** HTML crawl (depth 2) found 132
+  pages and all key template groups on AI Regulation Reference.
+- **Validated on AI Regulation Reference:** 746 pages → 16 groups →
+  22 scanned → 12 serious violations found on templates the previous
+  top-level-only scan missed entirely.
+
+## v10 -- 2026-03-26
+
+- **report.js:** New deterministic report generator (`scripts/report.js`)
+  handles Phases 3 and 5: WCAG compliance matrix (hardcoded 50 criteria),
+  violation aggregation across pages, color-contrast detail extraction,
+  markdown report per output-contract.md, and JSON per output-schema.json.
+  The LLM no longer builds these manually (~3000 tokens saved).
+- **scan.js --summary:** Added `--summary` flag to `scripts/scan.js` that
+  keeps full violation detail but strips node data from passes and
+  inapplicable arrays, reducing output size (~500 tokens saved).
+- **Phase 1 condensed:** Replaced ~30-line framework-by-framework
+  enumeration with ~10 focused lines. The agent already knows how to
+  discover project structure (~500 tokens saved).
+- **Reference reads removed:** Phase 5 now invokes report.js directly.
+  The agent no longer reads output-contract.md or output-schema.json
+  during normal runs (~800 tokens saved).
+- **Phase 4 stays LLM-generated:** Manual check guidance requires
+  reasoning about the specific findings pattern and remains the agent's
+  responsibility.
+
+## v9 -- 2026-03-03
+
+- **First-run context validation:** Recorded a passing result for eval-6
+  by creating a workspace-local context file in `/tmp` with the bundled
+  bootstrap helper.
+- **Missing-browser-automation validation:** Recorded a passing result
+  for eval-7 by exercising the scanner against a workspace with
+  `axe-core` present but no Puppeteer dependency, confirming a clear
+  blocker message.
+- **Issue planning mitigation:** Added `scripts/plan-issues.js` and a
+  sample issue plan artifact so `markdown+issues` mode has a safe dry-run
+  path before live tracker writes.
+- **Validation stance:** Reduced the remaining publish-time runtime gap
+  to the live authenticated tracker path rather than the whole issue-mode
+  workflow.
+
+## v8 -- 2026-03-03
+
+- **Direct degraded-path validation:** Ran the bundled `scripts/scan.js`
+  helper against PAICE2 and recorded passing results for eval-4
+  (Lighthouse unavailable but report still generated) and eval-5
+  (expected URL wrong but runtime URL reconciled and persisted).
+- **Eval results updated:** Added concrete `results` entries for eval-4
+  and eval-5 in `evals/evals.json`.
+- **CI discoverability:** Updated `SKILL.md` so the GitHub Actions
+  starter in `assets/ci/github-actions/accessibility-audit.yml` is part
+  of the visible operating guidance rather than a hidden asset.
+- **Execution stance:** Kept the bundled scanner Puppeteer-first for
+  now. Playwright remains a documented fallback path but is not yet a
+  first-class helper implementation.
+
+## v7 -- 2026-03-03
+
+- **Reusable scripts:** Added `scripts/scan.js` for reusable axe-based
+  scanning and `scripts/bootstrap-context.js` for first-run workspace
+  context creation.
+- **Reference decomposition:** Split detailed output rules into
+  `references/output-contract.md`, issue creation rules into
+  `references/issue-trackers.md`, and the JSON contract into
+  `references/output-schema.json`.
+- **Eval expansion:** Added explicit eval coverage for missing
+  Lighthouse, runtime URL reconciliation, first-run context creation,
+  missing browser automation, and issue deduplication.
+- **Operational assets:** Added sample markdown/JSON output artifacts and
+  a GitHub Actions workflow template for scheduled or on-demand audits.
+- **Core skill cleanup:** Updated `SKILL.md` to prefer bundled helpers
+  and focused references over repeated inline detail.
+
+## v6 -- 2026-03-03
+
+- **Runtime URL handling:** Updated `SKILL.md` so a local port mismatch
+  is treated as a normal adaptation path. The skill now switches to the
+  live URL, records the mismatch in methodology, and updates the
+  workspace-local `base_url`.
+- **Lighthouse degraded mode:** Clarified that missing or failing
+  Lighthouse is a documented partial-audit path, not a failure. The
+  report must now state the skip reason explicitly in the executive
+  summary and methodology.
+- **Eval alignment:** Updated `evals/evals.json` so eval-1 allows URL
+  reconciliation and Lighthouse-optional execution instead of assuming a
+  fixed port and guaranteed Lighthouse score.
+- **Handoff update:** Recorded the Codex eval-1 findings from PAICE2 so
+  the next session starts from observed runtime behavior rather than
+  inferred gaps.
+
+## v5 -- 2026-03-03
+
+- **Configuration contract:** Added
+  `references/project-context-template.md` as the canonical schema for
+  `.a11y-audit/PROJECT_CONTEXT.md`.
+- **Examples:** Included one minimal example and one
+  `markdown+issues` example to reduce ambiguity around route lists,
+  standards, output paths, and issue-tracker settings.
+- **Core skill cleanup:** Updated `SKILL.md` to point to the template as
+  the field contract and removed the inline issue-tracker config block.
+
+## v4 -- 2026-03-03
+
+- **Portable core:** Removed the `metadata` block from `SKILL.md` so the
+  main skill file uses minimal frontmatter and remains Codex-compatible.
+- **Platform branches:** Added `references/claude-code.md` and
+  `references/codex.md` so Claude-specific guidance stays explicit
+  without leaking into the shared operating path.
+- **Workspace state:** Moved mutable project context out of the skill
+  install directory. The default path is now
+  `.a11y-audit/PROJECT_CONTEXT.md` in the audited workspace.
+- **Bundle sync:** Updated `HANDOFF.md`, `evals/evals.json`, and the
+  manifest to match the portable layout. Added `agents/openai.yaml` for
+  Codex skill-list metadata.
+
+## v3 -- 2026-03-03
+
+- **Output modes:** Replaced hardcoded GitHub Issue creation with three
+  configurable output modes: `markdown` (report only), `markdown+json`
+  (report + machine-readable JSON), `markdown+issues` (report + issue
+  tracker tickets). Mode is stored in PROJECT_CONTEXT.md and persisted
+  across runs.
+- **Self-configuring:** On first run, if no output_mode is set, the skill
+  asks the user to choose and persists the preference. Subsequent runs
+  use the saved preference without asking.
+- **JSON schema:** Defined structured JSON output format for CI
+  integration, dashboards, and trend tracking.
+- **Tracker-agnostic:** Issue tracker configuration (GitHub, GitLab,
+  Linear, Jira) moved to PROJECT_CONTEXT.md alongside the output mode.
+  The skill no longer assumes any specific tracker.
+- **Phase rename:** Phase 5 renamed from "Report Generation" to "Output
+  Generation". Phase 6 renamed from "Issue Creation (Opt-In)" to "Issue
+  Creation (conditional)"; runs only in markdown+issues mode.
+- `gh` CLI removed as a top-level dependency; now conditional on
+  markdown+issues mode with GitHub tracker selection.
+
+## v2 -- 2026-03-03
+
+- **Token efficiency:** Removed static WCAG 2.1 criteria enumeration
+  (57 lines); model generates matrix from its own knowledge. Removed
+  hardcoded "no axe coverage" list (15 lines); coverage determined at
+  runtime from axe results. Condensed report template from full markdown
+  mock (115 lines) to structural spec (30 lines). Condensed issue
+  template from full mock (30 lines) to field list (10 lines). Net
+  reduction: 632 to 441 lines (~30%).
+- **Portability:** Renamed context file from PAICE_CONTEXT.md to
+  PROJECT_CONTEXT.md. Added Playwright as alternative to Puppeteer.
+  Added multi-tracker support in Phase 6 (GitLab, Linear, Jira).
+- **Usefulness:** Added delta/comparison section in report for repeat
+  audits (diff new vs. resolved violations). Made Phase 4 manual
+  checklists dynamic based on Phase 2 automated findings rather than
+  static.
+- Validated via eval-1 against PAICE2 (3 pages, Lighthouse 93, 76
+  violations, 5 unique rules, report generated successfully).
+
+## v1 -- 2026-03-02
+
+- Bootstrap under skill-provenance system. All files versioned, manifest
+  and changelog created.
+- SKILL.md v1: Six-phase accessibility audit pipeline
+  - Phase 1: Environment Discovery (tech stack, routes, existing tooling)
+  - Phase 2: Automated Scanning (axe-core via Puppeteer, Lighthouse CLI)
+  - Phase 3: Compliance Mapping (WCAG 2.1 AA matrix, project-specific standards)
+  - Phase 4: Manual Check Guidance (checklists by testing method)
+  - Phase 5: Report Generation (structured markdown with tables)
+  - Phase 6: Issue Creation (opt-in, deduplication via HTML comments)
+- WCAG 2.1 AA criteria reference embedded (50 Level A and AA criteria)
+- axe-core scanning script template with ES module support
+- GitHub Issue template with deduplication key pattern
+- evals/evals.json: 3 eval cases defined, pending first run
+- HANDOFF.md: Bootstrap context with known limitations

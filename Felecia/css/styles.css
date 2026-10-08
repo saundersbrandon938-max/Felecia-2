@@ -1,0 +1,109 @@
+/* Felicia Saunders website styles */
+:root{
+  --cream:#fbf6ef; --sand:#f3e8d9; --clay:#c8643b; --clay-dk:#a84f2b;
+  --forest:#2f4a3e; --forest-dk:#1f342b; --ink:#2b2622; --muted:#6c625a;
+  --white:#fff; --line:#e6d9c7; --radius:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Nunito Sans",system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6;font-size:17px}
+h1,h2,h3{font-family:"Fraunces",Georgia,serif;line-height:1.15;margin:0 0 .5em;color:var(--forest-dk)}
+h1{font-size:clamp(2.3rem,5.5vw,3.8rem)}
+h2{font-size:clamp(1.8rem,4vw,2.6rem)}
+h3{font-size:1.25rem}
+p{margin:0 0 1em}
+a{color:var(--clay-dk)}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;font-weight:700;color:var(--clay)}
+.btn{display:inline-block;background:var(--clay);color:#fff;text-decoration:none;font-weight:700;padding:14px 26px;border-radius:999px;border:0;cursor:pointer;font-size:1rem;transition:background .2s,transform .2s}
+.btn:hover{background:var(--clay-dk);transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--forest-dk);border:2px solid var(--forest-dk)}
+.btn.ghost:hover{background:var(--forest-dk);color:#fff}
+.ph{background:#fff4c2;border-radius:4px;padding:0 4px;font-style:normal}
+
+/* Nav */
+header{position:sticky;top:0;z-index:20;background:rgba(251,246,239,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{font-family:"Fraunces",serif;font-weight:700;font-size:1.35rem;color:var(--forest-dk);text-decoration:none}
+.logo small{display:block;font-family:"Nunito Sans";font-weight:600;font-size:.7rem;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+.nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0}
+.nav ul a{color:var(--ink);text-decoration:none;font-weight:600}
+.nav ul a:hover{color:var(--clay)}
+.nav .btn{padding:10px 20px}
+@media(max-width:860px){.nav ul{display:none}}
+
+/* Hero */
+.hero{padding:72px 0 84px;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.hero p.lead{font-size:1.2rem;color:var(--muted);max-width:34em}
+.hero .ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.portrait{position:relative;aspect-ratio:4/5;border-radius:200px 200px var(--radius) var(--radius);background:linear-gradient(160deg,#e9d3b8,#d6a983);display:flex;align-items:center;justify-content:center;text-align:center;color:var(--forest-dk);font-weight:700;box-shadow:0 30px 60px -30px rgba(47,74,62,.45)}
+.portrait span{background:rgba(255,255,255,.7);padding:10px 16px;border-radius:12px;font-size:.9rem}
+.badge{position:absolute;bottom:26px;left:-28px;background:#fff;border-radius:14px;padding:14px 18px;box-shadow:0 14px 30px -12px rgba(0,0,0,.25);display:flex;gap:12px;align-items:center}
+.badge b{font-family:"Fraunces";font-size:1.6rem;color:var(--clay)}
+.badge small{color:var(--muted);line-height:1.3;display:block}
+@media(max-width:860px){.hero-grid{grid-template-columns:1fr}.portrait{max-width:360px;margin:0 auto}.badge{left:10px}}
+
+/* Stats */
+.stats{background:var(--forest);color:#fff;padding:38px 0}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+.stats b{display:block;font-family:"Fraunces";font-size:2.3rem;color:#f4c9a8}
+.stats span{font-size:.92rem;opacity:.9}
+@media(max-width:700px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+
+section{padding:88px 0}
+.center{text-align:center;max-width:680px;margin:0 auto 48px}
+
+/* Services */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px 28px;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 20px 40px -24px rgba(47,74,62,.35)}
+.icon{width:52px;height:52px;border-radius:14px;background:var(--sand);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.icon svg{width:26px;height:26px;stroke:var(--clay);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.card ul{padding-left:18px;color:var(--muted);margin:0}
+@media(max-width:900px){.cards{grid-template-columns:1fr}}
+
+/* About */
+.about{background:var(--sand)}
+.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.timeline{border-left:3px solid var(--clay);padding-left:24px;margin-top:28px}
+.timeline div{margin-bottom:22px;position:relative}
+.timeline div::before{content:"";position:absolute;left:-33px;top:6px;width:15px;height:15px;border-radius:50%;background:var(--cream);border:3px solid var(--clay)}
+.timeline b{color:var(--forest-dk);display:block}
+.values{display:grid;gap:16px}
+.value{background:#fff;border-radius:14px;padding:20px 22px}
+.value h3{margin-bottom:.25em}
+.value p{margin:0;color:var(--muted)}
+@media(max-width:860px){.about-grid{grid-template-columns:1fr}}
+
+/* Areas */
+.areas{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.areas span{background:#fff;border:1px solid var(--line);padding:10px 20px;border-radius:999px;font-weight:600}
+
+/* Testimonials */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.quote{background:#fff;border-radius:var(--radius);padding:30px;border:1px solid var(--line)}
+.quote .stars{color:var(--clay);letter-spacing:3px;margin-bottom:10px}
+.quote p{font-style:italic}
+.quote b{color:var(--forest-dk)}
+@media(max-width:900px){.quotes{grid-template-columns:1fr}}
+
+/* Signup CTA */
+.signup{background:var(--forest-dk);color:#fff;border-radius:28px;padding:64px 48px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;position:relative;overflow:hidden}
+.signup h2{color:#fff}
+.signup p{opacity:.88}
+.signup ul{padding-left:0;list-style:none;margin:18px 0 0}
+.signup li{padding-left:28px;position:relative;margin-bottom:8px}
+.signup li::before{content:"✓";position:absolute;left:0;color:#f4c9a8;font-weight:700}
+form{background:#fff;color:var(--ink);border-radius:20px;padding:30px}
+label{display:block;font-weight:700;font-size:.9rem;margin:0 0 6px}
+input,select{width:100%;padding:13px 14px;border:1.5px solid var(--line);border-radius:10px;font:inherit;margin-bottom:16px;background:#fff}
+input:focus,select:focus{outline:none;border-color:var(--clay)}
+form .btn{width:100%}
+.fine{font-size:.78rem;color:var(--muted);margin:12px 0 0}
+.thanks{display:none;text-align:center;padding:30px 10px}
+.thanks h3{color:var(--forest-dk)}
+@media(max-width:860px){.signup{grid-template-columns:1fr;padding:40px 22px}}
+
+footer{padding:48px 0 36px;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+.foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}

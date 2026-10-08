@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F3F6F4">
+<title>Felicia Saunders, Columbus GA Realtor</title>
+<meta name="description" content="Felicia Saunders, REALTOR® with NextHome Infinite Real Estates Solutions, helps people buy and sell homes in Columbus, Georgia and across the Chattahoochee Valley.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* Felicia Saunders — "Riverwalk" design */
+
+:root{
+  --river:#1D4E57;
+  --river-deep:#143A41;
+  --mist:#F3F6F4;
+  --mist-2:#E3EBE7;
+  --leaf:#3F6B4A;
+  --sun:#E2A93B;
+  --sun-deep:#C98F22;
+  --ink:#1B2B31;
+  --soft:#4D5F64;
+
+  --display:"Bricolage Grotesque", "Trebuchet MS", sans-serif;
+  --body:"Source Serif 4", Georgia, serif;
+
+  /* type scale, ratio ~1.333 */
+  --s-1:.875rem; --s0:1.0625rem; --s1:1.33rem; --s2:1.77rem; --s3:2.36rem; --s4:3.15rem;
+
+  --gutter:clamp(16px,4vw,40px);
+  --river-col:72px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-tap-highlight-color:rgba(29,78,87,.15)}
+a,button,input,label{touch-action:manipulation}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body{
+  margin:0;background:var(--mist);color:var(--ink);
+  font-family:var(--body);font-size:var(--s0);line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{text-wrap:balance}
+p{text-wrap:pretty}
+h1,h2,h3,legend,.name,.foot-name{font-family:var(--display);color:var(--river-deep);font-weight:700;letter-spacing:-.01em}
+h1{font-size:clamp(2.3rem,5vw,3.7rem);line-height:1.02;margin:0 0 .35em;font-variation-settings:"wdth" 82;font-weight:800;letter-spacing:-.025em}
+h2{font-size:clamp(var(--s2),3.6vw,var(--s3));line-height:1.1;margin:0 0 .4em;font-variation-settings:"wdth" 88}
+h3{font-size:var(--s1);line-height:1.25;margin:0 0 .3em}
+p{margin:0 0 1em;max-width:62ch}
+a{color:var(--river)}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:4px}
+
+.shell{max-width:1120px;margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter)}
+.small{font-size:var(--s-1);color:var(--soft)}
+.ph{background:#FFF1C9;border-radius:3px;box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 .2em}
+
+.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:#fff;padding:8px 14px;z-index:99}
+.skip:focus{left:8px}
+
+/* Buttons */
+.btn{
+  display:inline-block;font-family:var(--display);font-weight:700;font-size:1.02rem;
+  background:var(--sun);color:var(--ink);text-decoration:none;border:0;cursor:pointer;
+  padding:.85em 1.4em;border-radius:6px;box-shadow:0 3px 0 var(--sun-deep);
+  transition:transform .12s, box-shadow .12s;
+}
+.btn:hover{background:#EBB54B;box-shadow:0 4px 0 var(--sun-deep)}
+.btn:active{transform:translateY(3px);box-shadow:0 0 0 var(--sun-deep)}
+.btn-small{padding:.55em 1em;font-size:.95rem}
+.link{font-family:var(--display);font-weight:600;color:var(--river);text-underline-offset:4px;text-decoration-thickness:1px}
+.link:hover{color:var(--river-deep);text-decoration-thickness:3px}
+
+/* Header */
+.top{position:sticky;top:0;z-index:10;background:rgba(243,246,244,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--mist-2)}
+.top-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;height:68px}
+.name{font-size:1.25rem;text-decoration:none;font-variation-settings:"wdth" 85}
+.top nav{display:flex;gap:26px}
+.top nav a{font-family:var(--display);font-weight:500;color:var(--ink);text-decoration:none}
+.top nav a:hover{color:var(--river);text-decoration:underline;text-underline-offset:5px}
+@media (max-width:880px){.top nav{display:none}}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(32px,6vw,80px);align-items:end;padding-top:clamp(48px,8vw,96px);padding-bottom:clamp(40px,6vw,72px)}
+.where{font-family:var(--display);font-weight:600;color:var(--leaf);margin-bottom:1.2em}
+.lead{font-size:var(--s1);line-height:1.6;color:var(--soft);max-width:36ch}
+.actions{display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin-top:32px}
+
+.house{margin:0}
+.house-photo{
+  aspect-ratio:4/5;background:var(--mist-2);
+  clip-path:polygon(50% 0, 100% 24%, 100% 100%, 0 100%, 0 24%);
+  display:flex;align-items:center;justify-content:center;
+  background-image:linear-gradient(180deg,#CFDDD8,#B6CBC4);
+}
+.house-photo span{font-family:var(--display);color:var(--river-deep);background:rgba(255,255,255,.75);padding:8px 14px;border-radius:4px;margin-top:20%}
+.house figcaption{font-family:var(--display);font-size:var(--s-1);color:var(--soft);margin-top:10px}
+@media (max-width:820px){
+  .hero{grid-template-columns:1fr}
+  .house{max-width:300px;order:-1}
+}
+
+/* Riverwalk */
+.riverwalk{position:relative;padding-bottom:40px}
+.river{
+  position:absolute;top:0;bottom:0;height:100%;width:60px;
+  left:calc(max((100% - 1120px)/2, 0px) + var(--gutter));
+  fill:none;stroke:var(--river);stroke-width:3;opacity:.35;
+}
+.stop{position:relative;padding-top:clamp(56px,8vw,96px);padding-left:calc(var(--gutter) + var(--river-col))}
+.stop > h2::before{
+  content:"";position:absolute;left:calc(var(--gutter) + 18px);margin-top:.32em;
+  width:22px;height:22px;border-radius:50%;background:var(--mist);border:4px solid var(--river);
+}
+.intro{color:var(--soft);font-size:var(--s1);line-height:1.55;max-width:44ch;margin-bottom:2em}
+@media (max-width:700px){
+  .river{display:none}
+  .stop{padding-left:var(--gutter)}
+  .stop > h2::before{display:none}
+}
+
+/* How I help: rows, not cards */
+.rows{border-top:2px solid var(--river)}
+.row{display:grid;grid-template-columns:minmax(180px,.4fr) 1fr;gap:clamp(16px,4vw,48px);padding:28px 0;border-bottom:1px solid #C9D6D1}
+.row p:last-child{margin-bottom:0}
+@media (max-width:640px){.row{grid-template-columns:1fr;gap:6px}}
+
+/* Story */
+.story{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,72px);align-items:start}
+.numbers{display:flex;flex-wrap:wrap;gap:16px 40px;margin:28px 0 0}
+.numbers div{display:flex;flex-direction:column-reverse}
+.numbers dt{font-size:var(--s-1);color:var(--soft)}
+.numbers dd{font-variant-numeric:tabular-nums;margin:0;font-family:var(--display);font-weight:700;font-size:var(--s3);line-height:1.1;color:var(--leaf)}
+.timeline{list-style:none;margin:0;padding:0}
+.timeline li{display:grid;grid-template-columns:5.5rem 1fr;gap:16px;padding:14px 0;border-top:1px solid #C9D6D1}
+.timeline li:last-child{border-bottom:1px solid #C9D6D1}
+.timeline .year{font-family:var(--display);font-weight:700;color:var(--river)}
+.timeline p{margin:0}
+@media (max-width:820px){.story{grid-template-columns:1fr}}
+
+/* Neighborhoods */
+.hoods{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);column-gap:48px}
+.hoods li{min-width:0;overflow-wrap:anywhere;padding:16px 0;border-top:1px solid #C9D6D1;display:flex;flex-direction:column}
+.hoods b{font-family:var(--display);font-weight:600;font-size:1.1rem;color:var(--river-deep)}
+.hoods span{color:var(--soft)}
+@media (max-width:640px){.hoods{grid-template-columns:1fr}}
+
+/* Reviews */
+.quotes{display:grid;grid-template-columns:1.4fr 1fr;grid-template-rows:auto auto;gap:24px 48px}
+.quote{margin:0}
+.quote blockquote{margin:0 0 .6em;font-style:italic;font-size:var(--s1);line-height:1.55}
+.quote-lead{grid-row:span 2;border-left:4px solid var(--sun);padding-left:24px}
+.quote-lead blockquote{font-size:var(--s2);line-height:1.4}
+.quote figcaption{font-family:var(--display);font-size:var(--s-1);color:var(--soft)}
+@media (max-width:760px){.quotes{grid-template-columns:1fr}.quote-lead{grid-row:auto}}
+
+/* Join */
+.join{
+  display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);
+  background:var(--river);color:#E9F1EE;border-radius:10px;padding:clamp(28px,5vw,56px);
+}
+.join h2{color:#fff}
+.join-text p{color:#C8DAD5}
+.join-form{display:grid;gap:18px}
+.field{margin:0;border:0;padding:0}
+.join label,.join legend{display:block;font-family:var(--display);font-weight:600;color:#fff;margin-bottom:6px;font-size:.98rem;padding:0}
+.join input[type=text],.join input:not([type]),.join input[type=email]{
+  width:100%;font:inherit;font-family:var(--body);padding:12px 14px;border-radius:6px;
+  border:2px solid transparent;background:#fff;color:var(--ink);
+}
+.join input::placeholder{color:#8A9A9E}
+.choices label:focus-within{outline:3px solid var(--sun);outline-offset:2px}
+.join input:focus-visible{outline:3px solid var(--sun);outline-offset:1px}
+.join input[aria-invalid=true]{border-color:#F2B8A2}
+.error{color:#FFD9C9;font-size:var(--s-1);margin:6px 0 0}
+.choices{display:flex;flex-wrap:wrap;gap:8px}
+.choices label{
+  display:flex;align-items:center;gap:8px;margin:0;font-weight:500;cursor:pointer;
+  border:1.5px solid rgba(255,255,255,.4);border-radius:999px;padding:7px 14px;
+}
+.choices label:has(input:checked){background:#fff;color:var(--river-deep);border-color:#fff}
+.choices input{accent-color:var(--sun);margin:0}
+.join .btn{justify-self:start}
+.join .small{color:#A9C4BD;margin:0}
+.joined{align-self:center}
+.joined h3{color:#fff;font-size:var(--s2)}
+.joined p{color:#C8DAD5}
+@media (max-width:820px){.join{grid-template-columns:1fr}}
+
+/* Footer */
+.foot{border-top:1px solid #C9D6D1;margin-top:48px;padding:40px 0 32px;color:var(--soft);font-size:var(--s-1)}
+.foot-inner{display:grid;grid-template-columns:1fr 1fr;gap:16px 48px}
+.foot-name{font-size:1.1rem;margin-bottom:.3em}
+.legal{grid-column:1 / -1;max-width:none;margin-top:8px}
+@media (max-width:600px){.foot-inner{grid-template-columns:1fr}}
+
+/* ---------- CRO additions ---------- */
+/* Hero quick signup */
+.quick{margin-top:28px;max-width:520px}
+.quick label{display:block;font-family:var(--display);font-weight:600;color:var(--river-deep);margin-bottom:8px}
+.quick-row{display:flex;gap:10px;flex-wrap:wrap}
+.quick-row input{
+  flex:1 1 220px;min-width:0;font:inherit;padding:13px 14px;border-radius:6px;
+  border:2px solid #B9CBC5;background:#fff;color:var(--ink);
+}
+.quick-row input:focus-visible{outline:3px solid var(--sun);outline-offset:1px;border-color:var(--river)}
+.quick-row input[aria-invalid=true]{border-color:#B4452B}
+.quick .error{color:#9E3A22}
+.quick-note{margin:8px 0 0}
+.quick-done{margin-top:28px;max-width:520px;background:#fff;border-left:4px solid var(--leaf);padding:14px 18px;border-radius:4px}
+.quick-done p{margin:0}
+.seller-link{margin-top:18px;font-family:var(--display);color:var(--soft)}
+
+/* Per-service buttons */
+.row-cta{display:inline-block;margin-top:4px}
+
+/* Trust near the form */
+.join-quote{margin:24px 0 0;padding-left:16px;border-left:3px solid var(--sun);font-style:italic;color:#E9F1EE}
+.join-quote cite{display:block;font-style:normal;font-family:var(--display);font-size:var(--s-1);margin-top:6px;color:#C8DAD5}
+.join .ph{color:var(--ink)}
+.join-call{margin-top:20px;font-size:var(--s-1)}
+
+/* Typo suggestion */
+.suggest{font-size:var(--s-1);margin:6px 0 0}
+.suggest button{font:inherit;background:none;border:0;padding:0;text-decoration:underline;cursor:pointer;color:inherit;font-weight:700}
+.quick .suggest{color:var(--river-deep)}
+.join .suggest{color:#FFE7B0}
+
+.btn:disabled{opacity:.75;cursor:progress}
+
+/* Mobile: text and signup first, smaller photo after */
+@media (max-width:820px){
+  .house{order:0;max-width:220px}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="shell top-inner">
+    <a href="#main" class="name" translate="no">Felicia Saunders</a>
+    <nav aria-label="Main">
+      <a href="#help">How I Help</a>
+      <a href="#story">My Story</a>
+      <a href="#neighborhoods">Neighborhoods</a>
+      <a href="#reviews">Reviews</a>
+    </nav>
+    <a href="#join" class="btn btn-small">Get New Listings</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero shell">
+    <div class="hero-text">
+      <p class="where">Columbus, Georgia and the Chattahoochee Valley</p>
+      <h1>Find the right Columbus home without the guesswork.</h1>
+      <p class="lead">I’m Felicia Saunders, a REALTOR® with <span translate="no">NextHome Infinite Real Estates Solutions</span>. I help first-time buyers, families, military households and longtime homeowners move with confidence. Tell me what you want and I’ll send you homes that fit.</p>
+      <form class="quick" id="quick-form" novalidate>
+        <label for="quick-email">Get new listings by email</label>
+        <div class="quick-row">
+          <input id="quick-email" name="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" placeholder="name@example.com…" required aria-describedby="quick-error">
+          <button class="btn" type="submit">Send Me Listings</button>
+        </div>
+        <p class="error" id="quick-error" aria-live="polite" hidden>Enter an email address like name@example.com.</p>
+        <p class="small quick-note">Free. Unsubscribe any time.</p>
+      </form>
+      <div class="quick-done" id="quick-done" role="status" aria-live="polite" hidden tabindex="-1">
+        <p><b>You’re on the list.</b> For homes that match exactly, <a href="#join" id="quick-more">tell Felicia what you’re looking for</a>.</p>
+      </div>
+      <p class="seller-link">Selling instead: <a href="#join" data-goal="sell" class="link">get a free home value estimate</a></p>
+    </div>
+    <figure class="house">
+      <div class="house-photo" role="img" aria-label="Photo of Felicia Saunders">
+        <span>[Felicia’s headshot]</span>
+      </div>
+      <figcaption>Felicia Saunders, REALTOR®</figcaption>
+    </figure>
+  </section>
+
+  <!-- RIVERWALK: everything below sits along the river line -->
+  <div class="riverwalk">
+    <svg class="river" aria-hidden="true" viewBox="0 0 60 1000" preserveAspectRatio="none">
+      <path d="M30 0 C 42 60, 18 120, 30 180 S 42 300, 30 360 S 18 480, 30 540 S 42 660, 30 720 S 18 840, 30 900 S 34 960, 30 1000"
+            vector-effect="non-scaling-stroke"/>
+    </svg>
+
+    <!-- HOW I HELP -->
+    <section id="help" class="stop shell">
+      <h2>How I help</h2>
+      <p class="intro">Here’s what working together looks like, whether you’re buying, selling or moving to town.</p>
+
+      <div class="rows">
+        <article class="row">
+          <h3>Buying a home</h3>
+          <div>
+            <p>Tell me what matters most, like budget, commute, schools and yard, and I’ll send you homes that fit. When you find the one, I’ll write a strong offer and guide you through inspection, appraisal and closing.</p>
+            <p class="small">A good fit for first-time buyers and anyone using a Federal Housing Administration (FHA) or Veterans Affairs (VA) loan.</p>
+            <a href="#join" data-goal="buy" class="link row-cta">Send Me Homes That Fit</a>
+          </div>
+        </article>
+        <article class="row">
+          <h3>Selling your home</h3>
+          <div>
+            <p>You’ll get a free value estimate based on recent Columbus sales, a pricing plan and help getting the house ready. I’ll market it with professional photos and negotiate for the best terms.</p>
+            <p class="small">Planning to sell next year? A value estimate now helps you set a budget and timeline.</p>
+            <a href="#join" data-goal="sell" class="link row-cta">Get My Free Home Value</a>
+          </div>
+        </article>
+        <article class="row">
+          <h3>Moving to Columbus</h3>
+          <div>
+            <p>If you’re relocating for Fort Benning, a new job or family, I’ll walk you through neighborhoods and set up video tours while you’re out of town. I’ll also connect you with trusted lenders and inspectors.</p>
+            <p class="small">On permanent change of station (PCS) orders? Send me your report date and we’ll plan backward from it.</p>
+            <a href="#join" data-goal="relocate" class="link row-cta">Help Me Plan My Move</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- MY STORY -->
+    <section id="story" class="stop shell">
+      <h2>My story</h2>
+      <div class="story">
+        <div class="story-text">
+          <p class="ph">[In Felicia’s own words: why she became an agent, how long she’s lived in or around Columbus, and what she loves about helping people find a home. Two or three short paragraphs.]</p>
+
+          <dl class="numbers">
+            <div><dt>Homes sold</dt><dd class="ph">[##]</dd></div>
+            <div><dt>Years licensed</dt><dd class="ph">[#]</dd></div>
+            <div><dt>Sales volume</dt><dd class="ph">[$#M]</dd></div>
+          </dl>
+        </div>
+
+        <ol class="timeline" aria-label="Career timeline">
+          <li><span class="year ph">[Year]</span><p>Earned her Georgia real estate license</p></li>
+          <li><span class="year ph">[Year]</span><p class="ph">[A milestone, like her first 25 closings or an award]</p></li>
+          <li><span class="year ph">[Year]</span><p>Joined <span translate="no">NextHome Infinite Real Estates Solutions</span></p></li>
+          <li><span class="year">Today</span><p>Helping buyers and sellers across the Chattahoochee Valley</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- NEIGHBORHOODS -->
+    <section id="neighborhoods" class="stop shell">
+      <h2>Neighborhoods I know well</h2>
+      <p class="intro">If you haven’t picked an area yet, start with these six.</p>
+      <ul class="hoods">
+        <li><b>Uptown and the Historic District</b><span>Walkable living near the Riverwalk and Broadway</span></li>
+        <li><b>Midtown</b><span>Tree-lined streets and classic older homes</span></li>
+        <li><b>North Columbus</b><span>Newer subdivisions close to shopping and schools</span></li>
+        <li><b>Harris County and Fortson</b><span>More land, lake access and room to spread out</span></li>
+        <li><b>Phenix City, Alabama</b><span>Across the river, with its own price range and taxes</span></li>
+        <li><b>Near Fort Benning</b><span>Short commutes for military families</span></li>
+      </ul>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviews" class="stop shell">
+      <h2>What clients say</h2>
+      <div class="quotes">
+        <figure class="quote quote-lead">
+          <blockquote class="ph">[Paste Felicia’s strongest real client review here. Longer reviews work well in this spot.]</blockquote>
+          <figcaption class="ph">[Client name], bought in [neighborhood]</figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote class="ph">[A real review from a seller.]</blockquote>
+          <figcaption class="ph">[Client name], sold in [neighborhood]</figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote class="ph">[A real review from a relocating or military family.]</blockquote>
+          <figcaption class="ph">[Client name], moved to Columbus</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- JOIN -->
+    <section id="join" class="stop stop-last shell">
+      <div class="join">
+        <div class="join-text">
+          <h2 id="join-title">Get homes that fit, sent to your inbox</h2>
+          <p id="join-intro">Tell me what you’re looking for and I’ll email homes that match, plus a short Columbus market update each month. I’ll also reach out personally to see how I can help.</p>
+          <blockquote class="join-quote"><span class="ph">[One short line from a real client review]</span><cite class="ph">[Client name]</cite></blockquote>
+          <p class="join-call">Rather talk first? Call or text Felicia at <span class="ph">[Phone]</span>. She replies within <span class="ph">[24 hours]</span>.</p>
+        </div>
+
+        <form id="join-form" class="join-form" novalidate>
+          <div class="field">
+            <label for="name">Your name</label>
+            <input id="name" name="name" autocomplete="name" placeholder="Jane Smith…" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" placeholder="name@example.com…" required aria-describedby="email-error">
+            <p class="error" id="email-error" aria-live="polite" hidden>Enter an email address like name@example.com.</p>
+          </div>
+          <fieldset class="field">
+            <legend>I’m planning to</legend>
+            <div class="choices">
+              <label><input type="radio" name="goal" value="buy" checked> Buy</label>
+              <label><input type="radio" name="goal" value="sell"> Sell</label>
+              <label><input type="radio" name="goal" value="relocate"> Relocate</label>
+              <label><input type="radio" name="goal" value="browse"> Browse for now</label>
+            </div>
+          </fieldset>
+          <button class="btn" type="submit" id="join-btn">Send Me Matching Homes</button>
+          <p class="small">Unsubscribe any time. Your email stays with Felicia.</p>
+        </form>
+
+        <div class="joined" id="joined" role="status" aria-live="polite" hidden tabindex="-1">
+          <h3>You’re on the list.</h3>
+          <p>Thanks! Felicia will email you soon with homes that fit what you’re looking for.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="shell foot-inner">
+    <div>
+      <p class="foot-name">Felicia Saunders, REALTOR®</p>
+      <p><span translate="no">NextHome Infinite Real Estates Solutions</span><br>Columbus, Georgia</p>
+    </div>
+    <div>
+      <p><span class="ph">[Phone]</span><br><span class="ph">[Email]</span><br>GA license <span class="ph">[#####]</span></p>
+    </div>
+    <p class="legal">Each NextHome franchise office is independently owned and operated. Equal Housing Opportunity. © <span id="year"></span> Felicia Saunders.</p>
+  </div>
+</footer>
+
+<script>
+// Felicia Saunders: site scripts
+
+// Footer year
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// NOTE: the forms are design-only for now. They validate and show a
+// confirmation, but emails are not saved anywhere until the forms are
+// connected to Mailchimp or another email service.
+
+var EMAIL_RE = /^\S+@\S+\.\S+$/;
+
+// ---------- Email typo suggestions ("Did you mean gmail.com?") ----------
+var DOMAINS = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'aol.com', 'live.com', 'msn.com', 'comcast.net', 'att.net'];
+
+function distance(a, b) {
+  var d = [];
+  for (var i = 0; i <= a.length; i++) { d[i] = [i]; }
+  for (var j = 0; j <= b.length; j++) { d[0][j] = j; }
+  for (i = 1; i <= a.length; i++) {
+    for (j = 1; j <= b.length; j++) {
+      d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1,
+        d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    }
+  }
+  return d[a.length][b.length];
+}
+
+function suggestFor(value) {
+  var at = value.lastIndexOf('@');
+  if (at < 1) return null;
+  var domain = value.slice(at + 1).toLowerCase();
+  if (!domain || DOMAINS.indexOf(domain) > -1) return null;
+  for (var k = 0; k < DOMAINS.length; k++) {
+    if (distance(domain, DOMAINS[k]) <= 2) return value.slice(0, at + 1) + DOMAINS[k];
+  }
+  return null;
+}
+
+function attachSuggestion(input) {
+  var box = document.createElement('p');
+  box.className = 'suggest';
+  box.hidden = true;
+  box.setAttribute('aria-live', 'polite');
+  input.closest('.field, .quick').appendChild(box);
+  input.addEventListener('blur', function () {
+    var fix = suggestFor(input.value.trim());
+    if (!fix) { box.hidden = true; return; }
+    box.innerHTML = '';
+    box.append('Did you mean ');
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = fix;
+    b.addEventListener('click', function () { input.value = fix; box.hidden = true; input.focus(); });
+    box.append(b, '?');
+    box.hidden = false;
+  });
+}
+
+// ---------- Shared submit handling ----------
+function validate(input, errorEl) {
+  var ok = EMAIL_RE.test(input.value.trim());
+  input.setAttribute('aria-invalid', ok ? 'false' : 'true');
+  errorEl.hidden = ok;
+  if (!ok) input.focus();
+  return ok;
+}
+
+function fakeSend(button, done) {
+  var label = button.textContent;
+  button.disabled = true;
+  button.textContent = 'Sending…';
+  setTimeout(function () { button.disabled = false; button.textContent = label; done(); }, 700);
+}
+
+// ---------- Hero quick signup (email only) ----------
+var quickForm = document.getElementById('quick-form');
+var quickEmail = document.getElementById('quick-email');
+var quickDone = document.getElementById('quick-done');
+attachSuggestion(quickEmail);
+
+quickForm.addEventListener('submit', function (e) {
+  e.preventDefault();
+  if (!validate(quickEmail, document.getElementById('quick-error'))) return;
+  fakeSend(quickForm.querySelector('button[type=submit]'), function () {
+    quickForm.hidden = true;
+    quickDone.hidden = false;
+    quickDone.focus();
+  });
+});
+
+// "Tell Felicia what you're looking for" carries the email down to the full form
+document.getElementById('quick-more').addEventListener('click', function () {
+  document.getElementById('email').value = quickEmail.value.trim();
+  setTimeout(function () { document.getElementById('name').focus(); }, 400);
+});
+
+// ---------- Full signup: copy changes with the visitor's goal ----------
+var COPY = {
+  buy:      { title: 'Get homes that fit, sent to your inbox', button: 'Send Me Matching Homes' },
+  sell:     { title: 'Get your free home value estimate', button: 'Get My Free Home Value' },
+  relocate: { title: 'Plan your move to Columbus', button: 'Help Me Plan My Move' },
+  browse:   { title: 'Get new Columbus listings by email', button: 'Send Me New Listings' }
+};
+var joinTitle = document.getElementById('join-title');
+var joinBtn = document.getElementById('join-btn');
+
+function setGoal(goal) {
+  var radio = document.querySelector('input[name=goal][value=' + goal + ']');
+  if (radio) radio.checked = true;
+  joinTitle.textContent = COPY[goal].title;
+  joinBtn.textContent = COPY[goal].button;
+}
+
+document.querySelectorAll('input[name=goal]').forEach(function (r) {
+  r.addEventListener('change', function () { setGoal(r.value); });
+});
+
+// Buttons like "Get My Free Home Value" open the form with that choice picked
+document.querySelectorAll('[data-goal]').forEach(function (a) {
+  a.addEventListener('click', function () { setGoal(a.getAttribute('data-goal')); });
+});
+
+var form = document.getElementById('join-form');
+var email = document.getElementById('email');
+var joined = document.getElementById('joined');
+attachSuggestion(email);
+
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+  if (!validate(email, document.getElementById('email-error'))) return;
+  fakeSend(joinBtn, function () {
+    form.hidden = true;
+    joined.hidden = false;
+    joined.focus();
+  });
+});
+</script>
+</body>
+</html>

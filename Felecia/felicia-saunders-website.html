@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Felicia Saunders | Columbus, GA Real Estate Agent</title>
+<meta name="description" content="Felicia Saunders, REALTOR® with NextHome Infinite Real Estate Solutions, helps families buy and sell homes in Columbus, Georgia and the Chattahoochee Valley.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#fbf6ef; --sand:#f3e8d9; --clay:#c8643b; --clay-dk:#a84f2b;
+    --forest:#2f4a3e; --forest-dk:#1f342b; --ink:#2b2622; --muted:#6c625a;
+    --white:#fff; --line:#e6d9c7; --radius:18px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Nunito Sans",system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6;font-size:17px}
+  h1,h2,h3{font-family:"Fraunces",Georgia,serif;line-height:1.15;margin:0 0 .5em;color:var(--forest-dk)}
+  h1{font-size:clamp(2.3rem,5.5vw,3.8rem)}
+  h2{font-size:clamp(1.8rem,4vw,2.6rem)}
+  h3{font-size:1.25rem}
+  p{margin:0 0 1em}
+  a{color:var(--clay-dk)}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+  .eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;font-weight:700;color:var(--clay)}
+  .btn{display:inline-block;background:var(--clay);color:#fff;text-decoration:none;font-weight:700;padding:14px 26px;border-radius:999px;border:0;cursor:pointer;font-size:1rem;transition:background .2s,transform .2s}
+  .btn:hover{background:var(--clay-dk);transform:translateY(-1px)}
+  .btn.ghost{background:transparent;color:var(--forest-dk);border:2px solid var(--forest-dk)}
+  .btn.ghost:hover{background:var(--forest-dk);color:#fff}
+  .ph{background:#fff4c2;border-radius:4px;padding:0 4px;font-style:normal}
+
+  /* Nav */
+  header{position:sticky;top:0;z-index:20;background:rgba(251,246,239,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{font-family:"Fraunces",serif;font-weight:700;font-size:1.35rem;color:var(--forest-dk);text-decoration:none}
+  .logo small{display:block;font-family:"Nunito Sans";font-weight:600;font-size:.7rem;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+  .nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0}
+  .nav ul a{color:var(--ink);text-decoration:none;font-weight:600}
+  .nav ul a:hover{color:var(--clay)}
+  .nav .btn{padding:10px 20px}
+  @media(max-width:860px){.nav ul{display:none}}
+
+  /* Hero */
+  .hero{padding:72px 0 84px;position:relative;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+  .hero p.lead{font-size:1.2rem;color:var(--muted);max-width:34em}
+  .hero .ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+  .portrait{position:relative;aspect-ratio:4/5;border-radius:200px 200px var(--radius) var(--radius);background:linear-gradient(160deg,#e9d3b8,#d6a983);display:flex;align-items:center;justify-content:center;text-align:center;color:var(--forest-dk);font-weight:700;box-shadow:0 30px 60px -30px rgba(47,74,62,.45)}
+  .portrait span{background:rgba(255,255,255,.7);padding:10px 16px;border-radius:12px;font-size:.9rem}
+  .badge{position:absolute;bottom:26px;left:-28px;background:#fff;border-radius:14px;padding:14px 18px;box-shadow:0 14px 30px -12px rgba(0,0,0,.25);display:flex;gap:12px;align-items:center}
+  .badge b{font-family:"Fraunces";font-size:1.6rem;color:var(--clay)}
+  .badge small{color:var(--muted);line-height:1.3;display:block}
+  @media(max-width:860px){.hero-grid{grid-template-columns:1fr}.portrait{max-width:360px;margin:0 auto}.badge{left:10px}}
+
+  /* Stats */
+  .stats{background:var(--forest);color:#fff;padding:38px 0}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+  .stats b{display:block;font-family:"Fraunces";font-size:2.3rem;color:#f4c9a8}
+  .stats span{font-size:.92rem;opacity:.9}
+  @media(max-width:700px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+
+  section{padding:88px 0}
+  .center{text-align:center;max-width:680px;margin:0 auto 48px}
+
+  /* Services */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px 28px;transition:transform .2s,box-shadow .2s}
+  .card:hover{transform:translateY(-4px);box-shadow:0 20px 40px -24px rgba(47,74,62,.35)}
+  .icon{width:52px;height:52px;border-radius:14px;background:var(--sand);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+  .icon svg{width:26px;height:26px;stroke:var(--clay);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .card ul{padding-left:18px;color:var(--muted);margin:0}
+  @media(max-width:900px){.cards{grid-template-columns:1fr}}
+
+  /* About */
+  .about{background:var(--sand)}
+  .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+  .timeline{border-left:3px solid var(--clay);padding-left:24px;margin-top:28px}
+  .timeline div{margin-bottom:22px;position:relative}
+  .timeline div::before{content:"";position:absolute;left:-33px;top:6px;width:15px;height:15px;border-radius:50%;background:var(--cream);border:3px solid var(--clay)}
+  .timeline b{color:var(--forest-dk);display:block}
+  .values{display:grid;gap:16px}
+  .value{background:#fff;border-radius:14px;padding:20px 22px}
+  .value h3{margin-bottom:.25em}
+  .value p{margin:0;color:var(--muted)}
+  @media(max-width:860px){.about-grid{grid-template-columns:1fr}}
+
+  /* Areas */
+  .areas{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+  .areas span{background:#fff;border:1px solid var(--line);padding:10px 20px;border-radius:999px;font-weight:600}
+
+  /* Testimonials */
+  .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .quote{background:#fff;border-radius:var(--radius);padding:30px;border:1px solid var(--line)}
+  .quote .stars{color:var(--clay);letter-spacing:3px;margin-bottom:10px}
+  .quote p{font-style:italic}
+  .quote b{color:var(--forest-dk)}
+  @media(max-width:900px){.quotes{grid-template-columns:1fr}}
+
+  /* Signup CTA */
+  .signup{background:var(--forest-dk);color:#fff;border-radius:28px;padding:64px 48px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;position:relative;overflow:hidden}
+  .signup h2{color:#fff}
+  .signup p{opacity:.88}
+  .signup ul{padding-left:0;list-style:none;margin:18px 0 0}
+  .signup li{padding-left:28px;position:relative;margin-bottom:8px}
+  .signup li::before{content:"✓";position:absolute;left:0;color:#f4c9a8;font-weight:700}
+  form{background:#fff;color:var(--ink);border-radius:20px;padding:30px}
+  label{display:block;font-weight:700;font-size:.9rem;margin:0 0 6px}
+  input,select{width:100%;padding:13px 14px;border:1.5px solid var(--line);border-radius:10px;font:inherit;margin-bottom:16px;background:#fff}
+  input:focus,select:focus{outline:none;border-color:var(--clay)}
+  form .btn{width:100%}
+  .fine{font-size:.78rem;color:var(--muted);margin:12px 0 0}
+  .thanks{display:none;text-align:center;padding:30px 10px}
+  .thanks h3{color:var(--forest-dk)}
+  @media(max-width:860px){.signup{grid-template-columns:1fr;padding:40px 22px}}
+
+  footer{padding:48px 0 36px;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+  .foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo">Felicia Saunders<small>REALTOR® · NextHome Infinite</small></a>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#areas">Areas</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+    </ul>
+    <a href="#join" class="btn">Get Home Updates</a>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Columbus, Georgia Real Estate</div>
+        <h1>Helping you find the place you'll call home.</h1>
+        <p class="lead">Whether you're buying your first home, selling the one you raised your family in, or relocating to Fort Benning, Felicia Saunders is with you from the first showing to the closing table.</p>
+        <div class="ctas">
+          <a href="#join" class="btn">Get Free Listings &amp; Market Updates</a>
+          <a href="#services" class="btn ghost">See How I Help</a>
+        </div>
+      </div>
+      <div class="portrait">
+        <span>[Felicia's headshot here]</span>
+        <div class="badge"><b><i class="ph">X</i>+</b><small>Years serving<br>Columbus families</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="wrap stats-grid">
+      <div><b class="ph" style="background:none">[##]</b><span>Homes Sold</span></div>
+      <div><b class="ph" style="background:none">[$#M]</b><span>In Sales Volume</span></div>
+      <div><b class="ph" style="background:none">[#]</b><span>Years Licensed</span></div>
+      <div><b class="ph" style="background:none">[5.0★]</b><span>Client Rating</span></div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="center">
+        <div class="eyebrow">What I Do</div>
+        <h2>Real estate, made personal</h2>
+        <p>Every move is a big life moment. My job is to make it feel simple, clear and exciting, never stressful.</p>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></div>
+          <h3>Buying a Home</h3>
+          <p>From pre-approval to keys in hand, I'll help you find the right home at the right price.</p>
+          <ul><li>Personalized home searches</li><li>First-time buyer guidance</li><li>Strong offer negotiation</li></ul>
+        </div>
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2v20"/><path d="M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <h3>Selling Your Home</h3>
+          <p>Smart pricing and standout marketing to sell your home for top dollar.</p>
+          <ul><li>Free home value report</li><li>Professional photos &amp; marketing</li><li>Expert pricing strategy</li></ul>
+        </div>
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/></svg></div>
+          <h3>Relocation &amp; Military</h3>
+          <p>Moving to Columbus or Fort Benning? I'll help you learn the area and settle in fast.</p>
+          <ul><li>Neighborhood &amp; school guidance</li><li>Virtual tours for out-of-town buyers</li><li>VA loan friendly process</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / HISTORY -->
+  <section id="about" class="about">
+    <div class="wrap about-grid">
+      <div>
+        <div class="eyebrow">Meet Felicia</div>
+        <h2>Your neighbor in real estate</h2>
+        <p>I'm Felicia Saunders, a REALTOR® with NextHome Infinite Real Estate Solutions in Columbus, Georgia. <i class="ph">[Add 2–3 sentences in Felicia's voice: why she became an agent, her connection to Columbus, and what she loves about helping families.]</i></p>
+        <div class="timeline">
+          <div><b class="ph">[Year]</b>Earned Georgia real estate license</div>
+          <div><b class="ph">[Year]</b><i class="ph">[Milestone, e.g. first 25 homes sold]</i></div>
+          <div><b class="ph">[Year]</b>Joined NextHome Infinite Real Estate Solutions</div>
+          <div><b>Today</b>Helping buyers and sellers across the Chattahoochee Valley</div>
+        </div>
+      </div>
+      <div class="values">
+        <div class="value"><h3>Clear communication</h3><p>You'll always know what's happening and what comes next. No surprises.</p></div>
+        <div class="value"><h3>Local know-how</h3><p>Neighborhoods, schools, pricing trends: I know this market because I live it.</p></div>
+        <div class="value"><h3>On your side</h3><p>I negotiate hard for you and treat your goals like they're my own.</p></div>
+        <div class="value"><h3>There after closing</h3><p>Need a contractor, a lender, or advice years later? Just call.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AREAS -->
+  <section id="areas">
+    <div class="wrap">
+      <div class="center">
+        <div class="eyebrow">Where I Work</div>
+        <h2>Serving the Chattahoochee Valley</h2>
+      </div>
+      <div class="areas">
+        <span>Columbus</span><span>Midtown</span><span>North Columbus</span><span>Uptown &amp; Historic District</span>
+        <span>Green Island Hills</span><span>Fortson</span><span>Harris County</span><span>Phenix City, AL</span><span>Fort Benning</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews" style="padding-top:0">
+    <div class="wrap">
+      <div class="center">
+        <div class="eyebrow">Client Stories</div>
+        <h2>What my clients say</h2>
+      </div>
+      <div class="quotes">
+        <div class="quote"><div class="stars">★★★★★</div><p class="ph">[Paste a real client review here.]</p><b>[Client name]</b><br><small>[Bought in ___]</small></div>
+        <div class="quote"><div class="stars">★★★★★</div><p class="ph">[Paste a real client review here.]</p><b>[Client name]</b><br><small>[Sold in ___]</small></div>
+        <div class="quote"><div class="stars">★★★★★</div><p class="ph">[Paste a real client review here.]</p><b>[Client name]</b><br><small>[Relocated to ___]</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMAIL SIGNUP CTA -->
+  <section id="join" style="padding-top:0">
+    <div class="wrap">
+      <div class="signup">
+        <div>
+          <div class="eyebrow" style="color:#f4c9a8">Stay in the Loop</div>
+          <h2>Get new listings &amp; local market updates</h2>
+          <p>Join my email list and I'll personally reach out to help with your home search or sale. No spam, ever.</p>
+          <ul>
+            <li>New homes before they hit the big sites</li>
+            <li>Free home value estimate for sellers</li>
+            <li>Monthly Columbus market snapshot</li>
+          </ul>
+        </div>
+        <div>
+          <form id="signupForm" novalidate>
+            <label for="name">Your name</label>
+            <input id="name" name="name" autocomplete="name" placeholder="Jane Smith" required>
+            <label for="email">Email address</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+            <label for="interest">I'm interested in…</label>
+            <select id="interest" name="interest">
+              <option>Buying a home</option>
+              <option>Selling my home</option>
+              <option>Relocating to Columbus</option>
+              <option>Just browsing for now</option>
+            </select>
+            <button class="btn" type="submit">Send Me Updates</button>
+            <p class="fine">By signing up you agree to receive emails from Felicia Saunders. Unsubscribe anytime.</p>
+          </form>
+          <div class="thanks" id="thanks" style="background:#fff;border-radius:20px;color:var(--ink)">
+            <h3>Thank you! 🏡</h3>
+            <p>You're on the list. Felicia will be in touch soon.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <b style="color:var(--forest-dk);font-family:Fraunces;font-size:1.1rem">Felicia Saunders, REALTOR®</b><br>
+      NextHome Infinite Real Estate Solutions · Columbus, GA<br>
+      <span class="ph">[Phone]</span> · <span class="ph">[Email]</span> · GA License #<span class="ph">[#####]</span>
+    </div>
+    <div style="max-width:420px">Each NextHome franchise office is independently owned and operated. Equal Housing Opportunity. © <span id="yr"></span> Felicia Saunders.</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  // Design-only signup: validates and shows a thank-you. Connect to Mailchimp/etc. later.
+  document.getElementById('signupForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var email = document.getElementById('email');
+    if(!email.value || !/^\S+@\S+\.\S+$/.test(email.value)){
+      email.style.borderColor = '#c0392b'; email.focus(); return;
+    }
+    this.style.display = 'none';
+    document.getElementById('thanks').style.display = 'block';
+  });
+</script>
+</body>
+</html>
